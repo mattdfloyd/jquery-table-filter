@@ -31,7 +31,8 @@ You can then call the plugin using the CSS Selector for your Table and Text inpu
 	  	$(".f_txt").table_filter({
 			'table':'.f_tbl',
 			'filter_inverse':false,
-			'enable_space':false
+			'enable_space':false,
+			'cell_selector': 'td'
 		});
 	});
 ```
