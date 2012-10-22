@@ -48,6 +48,9 @@ You can then call the plugin using the CSS Selector for your Table and Text inpu
 +	`True` - it uses space in filter text as delimiters. e.g. if filter text = "good boy", it will search rows for "good" and "boy" seperately
 +	`False` - it will not use space as a delimiter. e.g. "good boy" will be treated as one word.
 
+`cell_selector` (string) - default: 'td'
++	Allows override of the cell selector, so that only certain cells will be filtered. Example setting to only filter on the first column: {'cell_selector':'td:first-child'}
+
 ####License
 Licensed under the MIT: http://www.opensource.org/licenses/mit-license.php    
 Copyright (c) 2012 by [Efe Amadasun]('http://efeamadasun.com')
