@@ -55,3 +55,6 @@ You can then call the plugin using the CSS Selector for your Table and Text inpu
 ####License
 Licensed under the MIT: http://www.opensource.org/licenses/mit-license.php    
 Copyright (c) 2012 by [Efe Amadasun]('http://efeamadasun.com')
+
+####Contributors
+[Andrew Bird]("https://github.com/who")
