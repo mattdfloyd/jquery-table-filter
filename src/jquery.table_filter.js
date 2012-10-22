@@ -27,6 +27,10 @@
  *        will search rows for "good" and "boy" seperately
  * False - it will not use space as a delimiter. e.g. "good boy" will be treated as one word.
  *
+ * cell_selector (string) - default: 'td'
+ * Allows override of the cell selector, so that only certain cells will be filtered.
+ * Example setting to only filter on the first column: {'cell_selector':'td:first-child'} 
+ *
  */
 
 (function($){
@@ -38,7 +42,8 @@
 			
 			'filter_inverse': false,
 			'enable_space': false,
-			'table': ''
+			'table': '',
+			'cell_selector': 'td'
 
 		}, options);
 
@@ -55,7 +60,7 @@
 				$.each(obj, function () {
 					//default visibilty for rows is set based on filter_inverse value
 					var show_tr = (settings.filter_inverse) ? true : false;
-					var inner_obj = $(this).find("td");
+					var inner_obj = $(this).find(settings.cell_selector);
 
 					$.each(inner_obj, function () {
 						var td_txt = $.trim($(this).text()).toLowerCase();
