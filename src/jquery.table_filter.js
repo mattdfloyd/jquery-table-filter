@@ -54,7 +54,7 @@
 			$this.bind("keyup", function () { 
 
 				//set filter text, and filterable table rows
-				var txt = $this.val().toLowerCase();
+				var txt = $this.val().toLowerCase().trim();
 				var obj = $(settings.table).find("tr:not(:has('th'))");
 
 				$.each(obj, function () {
