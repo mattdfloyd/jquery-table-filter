@@ -1,5 +1,4 @@
-##jquery.table_filter.js  
-version: 0.1.0 (Oct. 18, 2012)   
+##jquery.table_filter.js    
 
 ####What's this?
 This is a jQuery plugin that uses input from a textbox to filter rows in HTML tables. its fast and 
@@ -53,8 +52,4 @@ You can then call the plugin using the CSS Selector for your Table and Text inpu
 +	Allows override of the cell selector, so that only certain cells will be filtered. Example setting to only filter on the first column: {'cell_selector':'td:first-child'}
 
 ####License
-Licensed under the MIT: http://www.opensource.org/licenses/mit-license.php    
-Copyright (c) 2012 by [Efe Amadasun](http://efeamadasun.com)
-
-####Contributors
-[Andrew Bird](https://github.com/who)
+MIT License: http://www.opensource.org/licenses/mit-license.php    
