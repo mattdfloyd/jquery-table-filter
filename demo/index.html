@@ -3,7 +3,11 @@
 <script type="text/javascript" src="jquery.table_filter.js"></script>
 <script type="text/javascript">
 $(function(){ 
-	$(".f_txt").table_filter({'table':'.f_tbl'});
+	$(".f_txt").table_filter({
+		'table':'.f_tbl',
+		'no_result': 'No match found.',
+		'no_result_selector': '#no_result'
+	});
 });
 </script>
 
@@ -40,4 +44,7 @@ table td{ padding:5px; }
 </tr>
 
 </table>
+
+<div id="no_result"></div>
+
 </div>

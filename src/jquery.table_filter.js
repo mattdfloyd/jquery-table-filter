@@ -1,37 +1,4 @@
-/*
- * Table Filter (for jQuery)
- * version: 0.1.0 (Oct. 18, 2012)
- *
- * Licensed under the MIT:
- * http://www.opensource.org/licenses/mit-license.php
- *
- * Copyright 2012 Efe Amadasun [ efeamadasun@gmail.com ]
- *
- * USAGE:
- * 
- * <input type="text" class="f_txt"/>
- * <table class="f_tbl">...</table>
- * 
- * $(function(){ 
- * 	  $(".f_txt").table_filter({'table':'.f_tbl'});
- * });
- *
- * ADDITIONAL SETTINGS:
- *
- * filter_inverse (boolean) - default: False
- * True - filters out rows that match the filter text
- * False - filters out rows that do not match the filter text
- *
- * enable_space (boolean) - default: False
- * True - it uses space in filter text as delimiters. e.g. if filter text = "good boy", it 
- *        will search rows for "good" and "boy" seperately
- * False - it will not use space as a delimiter. e.g. "good boy" will be treated as one word.
- *
- * cell_selector (string) - default: 'td'
- * Allows override of the cell selector, so that only certain cells will be filtered.
- * Example setting to only filter on the first column: {'cell_selector':'td:first-child'} 
- *
- */
+//PLUGIN INFO: https://github.com/efeamadasun/jquery-table-filter
 
 (function($){
 
@@ -43,7 +10,9 @@
 			'filter_inverse': false,
 			'enable_space': false,
 			'table': '',
-			'cell_selector': 'td'
+			'cell_selector': 'td',
+			'no_result': '',
+			'no_result_selector': ''
 
 		}, options);
 
@@ -58,7 +27,7 @@
 				var obj = $(settings.table).find("tr:not(:has('th'))");
 
 				$.each(obj, function () {
-					//default visibilty for rows is set based on filter_inverse value
+					//decide whether to show matched rows or not using "filter_inverse" value
 					var show_tr = (settings.filter_inverse) ? true : false;
 					var inner_obj = $(this).find(settings.cell_selector);
 
@@ -74,7 +43,7 @@
 								var td_value = td_array[i];
 
 								if(td_txt.indexOf(td_value) != -1){
-									show_tr = (settings.filter_inverse) ? false : true;
+									show_tr = !show_tr;
 								}
 							});
 
@@ -82,7 +51,7 @@
 						else{
 
 							if(td_txt.indexOf(txt) != -1){
-								show_tr = (settings.filter_inverse) ? false : true;
+								show_tr = !show_tr;
 							}
 
 						}
@@ -101,6 +70,15 @@
 				//display all rows if filter text is empty
 				if($.trim(txt) == ""){
 					$(settings.table).find("tr").show();
+				}
+				
+				//show "No Results" div if not matching rows were found
+				var num_rows = $(settings.table).find("tr:not(:has('th')):visible").size();
+				if(num_rows == 0 && settings.no_result != "" && settings.no_result_selector != ""){
+					$(settings.no_result_selector).text(settings.no_result).show();
+				}
+				else{
+					$(settings.no_result_selector).text("").hide();
 				}
 
 			});
