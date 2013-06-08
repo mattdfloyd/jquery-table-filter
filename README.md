@@ -38,7 +38,7 @@ You can then call the plugin using the CSS Selector for your Table and Text inpu
 ```
 
 ####Settings:
-`table` (CSS selector) - ''
+`table` (CSS selector) - default:''
 +	Table with the rows you want to filter. This setting has no default value, and is required.
 
 `filter_inverse` (boolean) - default: false
