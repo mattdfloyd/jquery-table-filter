@@ -30,6 +30,7 @@
 					//decide whether to show matched rows or not using "filter_inverse" value
 					var show_tr = (settings.filter_inverse) ? true : false;
 					var inner_obj = $(this).find(settings.cell_selector);
+					var change = 0; 
 
 					$.each(inner_obj, function () {
 						var td_txt = $.trim($(this).text()).toLowerCase();
@@ -43,7 +44,7 @@
 								var td_value = td_array[i];
 
 								if(td_txt.indexOf(td_value) != -1){
-									show_tr = !show_tr;
+									change++;
 								}
 							});
 
@@ -51,13 +52,14 @@
 						else{
 
 							if(td_txt.indexOf(txt) != -1){
-								show_tr = !show_tr;
-							}
+								change++;
+							} 
 
 						}
 
 					});
 
+					show_tr = (change > 0) ? !show_tr : show_tr;
 					if(show_tr){
 						$(this).show();
 					}
